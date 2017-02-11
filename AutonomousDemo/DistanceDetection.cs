@@ -4,11 +4,11 @@ namespace AutonomousDemo
 {
     public class DistanceDetection
     {
-        public decimal LeftLaneBoarder { get; set; }
-        public decimal RightLaneBoarder { get; set; }
+        public decimal LeftLaneBorder { get; set; }
+        public decimal RightLaneBorder { get; set; }
         public TrafficStop TrafficStop { get; set; }
 
-        public decimal LaneBoarderDistance()
+        public decimal LaneBorderDistance()
         {
             throw new NotImplementedException();
         }
