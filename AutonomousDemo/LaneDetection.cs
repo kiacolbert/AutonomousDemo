@@ -2,13 +2,13 @@
 
 namespace AutonomousDemo
 {
-    public class DistanceDetection
+    public class LaneDetection
     {
-        public decimal LeftLaneBorder { get; set; }
-        public decimal RightLaneBorder { get; set; }
+        public double LeftLaneBorder { get; set; }
+        public double RightLaneBorder { get; set; }
         public TrafficStop TrafficStop { get; set; }
 
-        public decimal LaneBorderDistance()
+        public double LaneBorderDistance()
         {
             throw new NotImplementedException();
         }

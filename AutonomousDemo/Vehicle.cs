@@ -8,11 +8,16 @@ namespace AutonomousDemo
 {
     public class Vehicle
     {
-        public decimal Area { get; set; }
-        
-        public Vehicle(decimal area)
+        public double Area { get; set; }
+        public VehicleMotion vehicleMotion { get; set; }
+
+        public Vehicle(double area, VehicleMotion vehicleMotion)
         {
             this.Area = area;
+            this.vehicleMotion = vehicleMotion;
         }
+
+      
     }
+
 }

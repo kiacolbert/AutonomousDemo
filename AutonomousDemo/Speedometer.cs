@@ -12,13 +12,13 @@ namespace AutonomousDemo
         {
 
             var metersPerSecond= vehicleMotion.PressGasPedal(travelTime, position);
-            var milesPerHour = CalculateMilesPerHour(metersPerSecond);
+            var milesPerHour = ConvertMetersPerSecondToMpH(metersPerSecond);
             Console.WriteLine($"Speed: {milesPerHour}");
         }
-        public double ConvertMetersPerSecondToMilesPerHour(double metersPerSecond)
+        public double ConvertMetersPerSecondToMpH(double metersPerSecond)
         {
             return metersPerSecond * 2.2369;
         }
-        
+
     }
 }

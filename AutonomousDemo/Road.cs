@@ -8,16 +8,14 @@ namespace AutonomousDemo
 {
     public class Road
     {
-        public decimal LaneWidth { get; set; }
+        public double Distance { get; set; }
+        public double LaneWidth { get; set; }
         public RoadType Type { get; set; }
-        public WeatherCondition Condition { get; set; }
-    }
-
-    public class WeatherCondition
-    {
     }
 
     public enum RoadType
     {
+        StraightTrack
     }
+    
 }
