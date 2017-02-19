@@ -9,20 +9,13 @@ namespace AutonomousDemo
     public class VehicleMotion
     {
         public Vehicle Vehicle;
-        public double CurrentSpeed;
+        public int Time;
+        public Speed CurrentSpeed { get; set; }
         public double CurrentAcceleration { get; set; }
-        public double CurrentVelocity { get; set; }
-                                           //int CurrentTime = DateTime.Now.Second;
-                                           //int CurrentTime = 0;
-                                           // public int TravelTime;
-        public Position CurrentPosition;
-
-
-
-        // public VehicleMotion(Vehicle vehicle, Position currentPosition, int currentSpeed)
+        public Velocity CurrentVelocity { get; set; }
+        
         public VehicleMotion(double currentSpeed)
         {
-            //this.CurrentPosition = currentPosition;
             this.CurrentSpeed = currentSpeed;
         }
 
@@ -30,45 +23,43 @@ namespace AutonomousDemo
         {
             var finalVelocity = CalculateFinalVelocity(position, seconds);
             ConstantAcceleration(seconds, finalVelocity);
-            //var travelTime = position.TravelDistance / CurrentAcceleration;
             for (int i = 0; i < seconds; i++)
             {
-                CurrentVelocity += CurrentAcceleration;
+                CurrentVelocity += CurrentAcceleration; 
+                //This isn't really doing anything now
 
             }
             return CurrentVelocity;
         }
-        public void ConstantAcceleration(double travelTime, double finalVelocity,  double initialVelocity = 0)
-        {
-            CurrentAcceleration = (finalVelocity - initialVelocity) / travelTime;
-            
-        }
+       
         public void Brake()
         {
             CurrentSpeed = 0;
         }
-        public double CalculateFinalVelocity(Position position, int travelTime)
+        public double CalculateFinalVelocity(Velocity velocity, int travelTime)
         {
             var finalVelocity = position.TravelDistance / travelTime;
             return finalVelocity;
         }
       
     }
-    public class Position
+    public class Acceleration
     {
-        public int TravelDistance { get; set; }
-        public Direction Direction { get; set; }
+        public double TravelTime { get; set; }
+        public Velocity IntialVelocity { get; set; }
+        public Velocity FinalVelocity { get; set; }
 
-        public Position (int travelDistance) {
-            this.TravelDistance = travelDistance;
+        public Acceleration(double travelTime, Velocity intialVelocity, Velocity finalVelocity)
+        {
+            this.TravelTime = travelTime;
+            this.IntialVelocity = intialVelocity;
+            this.FinalVelocity = finalVelocity;
         }
-        
+        public void ConstantAcceleration(double travelTime, double finalVelocity, double initialVelocity = 0)
+        {
+            CurrentAcceleration = (finalVelocity - initialVelocity) / travelTime;
+
+        }
     }
-    public enum Direction
-    {
-        North,
-        South,
-        East,
-        West
-    }
+ 
 }
