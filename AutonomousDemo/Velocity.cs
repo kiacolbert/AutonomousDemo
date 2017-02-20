@@ -8,42 +8,59 @@ namespace AutonomousDemo
 {
     public class Velocity
     {
-        public double Speed { get; set; }
+        public double Speed { get; set; } = 0;
         public Direction Direction { get; set; } //radians
-        public Velocity(double speed, Direction direction) 
+
+        //public Velocity(double metersTraveled, double time, Direction direction)
+        //{   
+        //    this.Speed =  metersTraveled / time;
+        //    this.Direction = direction;
+        //}
+
+        public Velocity(double speed, Direction direction)
         {
             this.Speed = speed;
             this.Direction = direction;
         }
+
         public static Velocity operator +(Velocity vIntial, Velocity vFinal)
         {
-            Velocity velocity = null;
+            
             var totalSpeed = vIntial.Speed + vFinal.Speed;
-           // Direction totalDirection = vIntial.Direction + vFinal.Direction;
-            //vIntial.Direction + vFinal.Direction);
-            //return new Velocity
-            return velocity;
+            Direction totalDirection = vIntial.Direction + vFinal.Direction;
+
+            return new Velocity(totalSpeed, totalDirection);
                 
+        }
+        public static Velocity operator -(Velocity vFinal, Velocity vInitial)
+        {
+
+            var totalSpeed = vFinal.Speed + vInitial.Speed;
+            Direction totalDirection = vFinal.Direction + vInitial.Direction;
+
+            return new Velocity(totalSpeed, totalDirection);
+
         }
     }
 
     public class Direction
     {
-        public double XCoordinateOffSet { get; set; }
-        public double YCoordinateOffSet { get; set; }
-        public double Angle { get; set; }
+        public double XCoordinateOffSet { get; set; } = 0;
+        public double YCoordinateOffSet { get; set; } = 0;
+        public double Angle { get; set; } = 1.5708; // 90 degrees
 
-        public Direction(Position position)
+        public Direction(double metersTraveled, double angle)
         {
-            this.XCoordinateOffSet = position.XCoordinate;
-            this.YCoordinateOffSet = position.YCoordinate;
+            this.Angle = angle;
+            this.XCoordinateOffSet = metersTraveled * Math.Cos(angle);
+            this.YCoordinateOffSet = metersTraveled * Math.Sin(angle);
         }
-        
-        //public static Position operator +(Direction direction1, Direction direction2)
-        //{
 
-        //    return new Position(direction1.XCoordinateOffSet + direction2.XCoordinateOffSet, direction1.YCoordinateOffSet + direction2.YCoordinateOffSet);
-        //}
+        public static Direction operator +(Direction direction1, Direction direction2)
+        {
+
+            return new Direction(direction1.XCoordinateOffSet + direction2.XCoordinateOffSet, direction1.YCoordinateOffSet + direction2.YCoordinateOffSet);
+        }
         public void AdjustPositionByDirection(Position currentPosition)
         {
             currentPosition.XCoordinate += XCoordinateOffSet;
@@ -52,8 +69,8 @@ namespace AutonomousDemo
     }
     public class Position
     {
-        public double XCoordinate { get; set; }
-        public double YCoordinate { get; set; }
+        public double XCoordinate { get; set; } = 0;
+        public double YCoordinate { get; set; } = 0;
 
         public Position(double xCoordinate, double yCoordinate)
         {
@@ -66,17 +83,20 @@ namespace AutonomousDemo
             return new Position(position1.XCoordinate + position2.XCoordinate, position1.YCoordinate + position2.YCoordinate);
         }
     }
-    public class Speed
-    {
-        //how do meters relate to  xy position
-        public double MetersTraveled { get; set; }
-        public double Time { get; set; }
+   
+    //public class Speed
+    //{
+    //    //how do meters relate to  xy position
+    //    public double MetersTraveled { get; set; }
+    //    public double Time { get; set; }
+    //    public double MetersPerSecond { get; set; }
 
-        public Speed(double metersTraveled, double time)
-        {
-            this.MetersTraveled = metersTraveled;
-            this.Time = time;
-        }
+    //    public Speed(double metersTraveled, double time)
+    //    {
+    //        this.MetersTraveled = metersTraveled;
+    //        this.Time = time;
+    //        this.MetersPerSecond = metersTraveled/time;
+    //    }
 
         
     }
