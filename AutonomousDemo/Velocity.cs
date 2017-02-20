@@ -9,9 +9,8 @@ namespace AutonomousDemo
     public class Velocity
     {
         public double Speed { get; set; }
-        public Direction Direction { get; set; } //radians, change radians to change direction
-
-        public Velocity(double speed, Direction direction)
+        public Direction Direction { get; set; } //radians
+        public Velocity(double speed, Direction direction) 
         {
             this.Speed = speed;
             this.Direction = direction;
@@ -20,7 +19,7 @@ namespace AutonomousDemo
         {
             Velocity velocity = null;
             var totalSpeed = vIntial.Speed + vFinal.Speed;
-            Direction totalDirection = vIntial.Direction + vFinal.Direction;
+           // Direction totalDirection = vIntial.Direction + vFinal.Direction;
             //vIntial.Direction + vFinal.Direction);
             //return new Velocity
             return velocity;
@@ -32,6 +31,7 @@ namespace AutonomousDemo
     {
         public double XCoordinateOffSet { get; set; }
         public double YCoordinateOffSet { get; set; }
+        public double Angle { get; set; }
 
         public Direction(Position position)
         {
