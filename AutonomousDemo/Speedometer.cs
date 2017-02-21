@@ -8,11 +8,11 @@ namespace AutonomousDemo
 {
     public class Speedometer
     {
-        public void SpeedometerDisplay(VehicleMotion vehicleMotion, int travelTime, Position position)
+        public void SpeedometerDisplay(VehicleMotion vehicleMotion, int travelTime, double meters)
         {
 
-            var metersPerSecond= vehicleMotion.PressGasPedal(travelTime, position);
-            var milesPerHour = ConvertMetersPerSecondToMpH(metersPerSecond);
+            var metersPerSecond= vehicleMotion.PressGasPedal(meters, travelTime);
+            var milesPerHour = ConvertMetersPerSecondToMpH(metersPerSecond.Speed);
             Console.WriteLine($"Speed: {milesPerHour}");
         }
         public double ConvertMetersPerSecondToMpH(double metersPerSecond)
