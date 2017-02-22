@@ -19,7 +19,7 @@ namespace AutonomousDemo
             this.CurrentSpeed = currentSpeed;
         }
 
-        public Velocity PressGasPedal(double meters, int seconds)
+        public Velocity Drive(double meters, int seconds)
         {
             var finalSpeed = CalculateSpeed(meters,seconds);
             Velocity finalVelocity = new Velocity(finalSpeed);

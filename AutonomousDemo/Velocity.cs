@@ -9,10 +9,10 @@ namespace AutonomousDemo
     public class Velocity
     {
         public double Speed { get; set; } = 0;
-        public double Direction { get; set; }  //radians
+        public double Direction { get; set; }  
 
 
-        public Velocity(double speed, double direction = 1.5708)
+        public Velocity(double speed, double direction = Math.PI/2.0)
         {
             this.Speed = speed;
             this.Direction = direction;
@@ -39,19 +39,6 @@ namespace AutonomousDemo
         }
         
     }
-
-    //public class Direction
-    //{
-    //    public double Angle { get; set; } = 1.5708; // 90 degrees
-
-    //    public Direction(double angle)
-    //    {
-    //        this.Angle = angle;
-    //        //this.XCoordinateOffSet = metersTraveled * Math.Cos(angle);
-    //        //this.YCoordinateOffSet = metersTraveled * Math.Sin(angle);
-    //    }
-
-    //}
 }
    
    
