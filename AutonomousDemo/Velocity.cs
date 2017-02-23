@@ -9,6 +9,10 @@ namespace AutonomousDemo
     public class Velocity
     {
         public double Speed { get; set; } = 0;
+        /// <summary>
+        /// 
+        /// Direction unit is radians
+        /// </summary>
         public double Direction { get; set; }  
 
 

@@ -16,7 +16,13 @@ namespace AutonomousDemo
             this.XCoordinate = xCoordinate;
             this.YCoordinate = yCoordinate;
         }
-        public Position TravelToPosition(Velocity velocity)
+        /// <summary>
+        /// TravelForOneSecond?
+        /// 
+        /// </summary>
+        /// <param name="velocity"></param>
+        /// <returns></returns>
+        public Position ToBeDetermined(Velocity velocity)
         {
             var x =  velocity.Speed * Math.Cos(velocity.Direction);
             var y = velocity.Speed * Math.Sin(velocity.Direction);
