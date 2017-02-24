@@ -10,7 +10,7 @@ namespace AutonomousDemo
     {
         public Vehicle Vehicle;
         public int Time;
-        public double CurrentSpeed { get; set; }
+        public Speed CurrentSpeed { get; set; }
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         
@@ -19,29 +19,47 @@ namespace AutonomousDemo
             this.CurrentSpeed = currentSpeed;
         }
 
-        public Velocity CalculateCurrentVelocity(double meters, int seconds)
+        public double PressGasPedal(int seconds, Position position)
         {
-            return new Velocity(meters/seconds);
-        }
+            var finalVelocity = CalculateFinalVelocity(position, seconds);
+            ConstantAcceleration(seconds, finalVelocity);
+            for (int i = 0; i < seconds; i++)
+            {
+                CurrentVelocity += CurrentAcceleration; 
+                //This isn't really doing anything now
 
+            }
+            return CurrentVelocity;
+        }
+       
         public void Brake()
         {
             CurrentSpeed = 0;
-            //need to decelerate over time
         }
-
-        public double CalculateSpeed(double meters, double time)
+        public double CalculateFinalVelocity(Velocity velocity, int travelTime)
         {
-            return meters / time;
+            var finalVelocity = position.TravelDistance / travelTime;
+            return finalVelocity;
         }
+      
+    }
+    public class Acceleration
+    {
+        public double TravelTime { get; set; }
+        public Velocity IntialVelocity { get; set; }
+        public Velocity FinalVelocity { get; set; }
 
-        public double ConstantAcceleration(double travelTime, Velocity finalVelocity, Velocity initialVelocity)
+        public Acceleration(double travelTime, Velocity intialVelocity, Velocity finalVelocity)
         {
-            var avgV = finalVelocity - initialVelocity;
-            return avgV.Speed / travelTime;
+            this.TravelTime = travelTime;
+            this.IntialVelocity = intialVelocity;
+            this.FinalVelocity = finalVelocity;
+        }
+        public void ConstantAcceleration(double travelTime, double finalVelocity, double initialVelocity = 0)
+        {
+            CurrentAcceleration = (finalVelocity - initialVelocity) / travelTime;
+
         }
     }
-
-   
  
 }

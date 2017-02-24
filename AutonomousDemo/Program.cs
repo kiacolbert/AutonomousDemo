@@ -12,7 +12,8 @@ namespace AutonomousDemo
         {
             VehicleMotion vehicleMotion = new VehicleMotion(0);
             Speedometer speedometer = new Speedometer();
-            speedometer.SpeedometerDisplay(vehicleMotion, 8, 202);
+            Position position = new Position(152);
+            speedometer.SpeedometerDisplay(vehicleMotion, 8, position);
          
         }
     }
