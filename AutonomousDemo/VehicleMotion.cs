@@ -10,7 +10,7 @@ namespace AutonomousDemo
     {
         public Vehicle Vehicle;
         public int Time;
-        public Speed CurrentSpeed { get; set; }
+        public double CurrentSpeed { get; set; }
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         
@@ -19,47 +19,29 @@ namespace AutonomousDemo
             this.CurrentSpeed = currentSpeed;
         }
 
-        public double PressGasPedal(int seconds, Position position)
+        public Velocity CalculateCurrentVelocity(double meters, int seconds)
         {
-            var finalVelocity = CalculateFinalVelocity(position, seconds);
-            ConstantAcceleration(seconds, finalVelocity);
-            for (int i = 0; i < seconds; i++)
-            {
-                CurrentVelocity += CurrentAcceleration; 
-                //This isn't really doing anything now
-
-            }
-            return CurrentVelocity;
+            return new Velocity(meters/seconds);
         }
-       
+
         public void Brake()
         {
             CurrentSpeed = 0;
+            //need to decelerate over time
         }
-        public double CalculateFinalVelocity(Velocity velocity, int travelTime)
-        {
-            var finalVelocity = position.TravelDistance / travelTime;
-            return finalVelocity;
-        }
-      
-    }
-    public class Acceleration
-    {
-        public double TravelTime { get; set; }
-        public Velocity IntialVelocity { get; set; }
-        public Velocity FinalVelocity { get; set; }
 
-        public Acceleration(double travelTime, Velocity intialVelocity, Velocity finalVelocity)
+        public double CalculateSpeed(double meters, double time)
         {
-            this.TravelTime = travelTime;
-            this.IntialVelocity = intialVelocity;
-            this.FinalVelocity = finalVelocity;
+            return meters / time;
         }
-        public void ConstantAcceleration(double travelTime, double finalVelocity, double initialVelocity = 0)
-        {
-            CurrentAcceleration = (finalVelocity - initialVelocity) / travelTime;
 
+        public double ConstantAcceleration(double travelTime, Velocity finalVelocity, Velocity initialVelocity)
+        {
+            var avgV = finalVelocity - initialVelocity;
+            return avgV.Speed / travelTime;
         }
     }
+
+   
  
 }
