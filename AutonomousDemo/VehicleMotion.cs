@@ -21,16 +21,7 @@ namespace AutonomousDemo
 
         public Velocity CalculateCurrentVelocity(double meters, int seconds)
         {
-            var finalSpeed = CalculateSpeed(meters,seconds);
-            Velocity finalVelocity = new Velocity(finalSpeed);
-            Velocity CurrentVelocity = new Velocity(0);
-            CurrentAcceleration = ConstantAcceleration(seconds, finalVelocity, CurrentVelocity);
-            for (int i = 0; i < seconds; i++)
-            {
-                CurrentVelocity.Speed += CurrentAcceleration;
-                //This isn't really doing anything now
-            }
-            return CurrentVelocity;
+            return new Velocity(meters/seconds);
         }
 
         public void Brake()

@@ -10,8 +10,7 @@ namespace AutonomousDemo
     {
         public double Speed { get; set; } = 0;
         /// <summary>
-        /// 
-        /// Direction unit is radians
+        /// Direction on a two-dimensional surface, in radians.  Assumes that 0 radians is due east.
         /// </summary>
         public double Direction { get; set; }  
 

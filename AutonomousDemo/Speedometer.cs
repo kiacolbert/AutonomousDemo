@@ -11,7 +11,7 @@ namespace AutonomousDemo
         public void SpeedometerDisplay(VehicleMotion vehicleMotion, int travelTime, double meters)
         {
 
-            var metersPerSecond= vehicleMotion.Drive(meters, travelTime);
+            var metersPerSecond= vehicleMotion.CalculateCurrentVelocity(meters, travelTime);
             var milesPerHour = ConvertMetersPerSecondToMpH(metersPerSecond.Speed);
             Console.WriteLine($"Speed: {milesPerHour}");
         }
