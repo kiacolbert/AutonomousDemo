@@ -24,10 +24,18 @@ namespace AutonomousDemo
             return new Velocity(meters/seconds);
         }
 
-        public void Brake()
+        public Velocity CalculateDecelerationPerSecond(Velocity velocity)
         {
-            CurrentSpeed = 0;
-            //need to decelerate over time
+            var delerationRate = -3.4; //m/s^2
+            var decreasedSpeed = velocity.Speed - delerationRate;
+            velocity.Speed = decreasedSpeed;
+            //something about direction
+
+            return velocity;
+        }
+        public Velocity ZeroVelocity(Velocity velocity)
+        {
+            throw new NotImplementedException();
         }
 
         public double CalculateSpeed(double meters, double time)
