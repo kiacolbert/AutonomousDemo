@@ -10,13 +10,15 @@ namespace AutonomousDemo
     {
         public Vehicle Vehicle;
         public int Time;
+
         public double CurrentSpeed { get; set; }
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         
-        public VehicleMotion(double currentSpeed)
+        public VehicleMotion(double currentSpeed, double meters, int seconds)
         {
             this.CurrentSpeed = currentSpeed;
+            this.CurrentVelocity = CalculateCurrentVelocity(meters, seconds);
         }
 
         public Velocity CalculateCurrentVelocity(double meters, int seconds)
@@ -24,10 +26,10 @@ namespace AutonomousDemo
             return new Velocity(meters/seconds);
         }
 
-        public Velocity CalculateDecelerationPerSecond(Velocity velocity)
+        public Velocity DecelerateVelocityPerSecond(Velocity velocity)
         {
             var delerationRate = -3.4; //m/s^2
-            var decreasedSpeed = velocity.Speed - delerationRate;
+            var decreasedSpeed = velocity.Speed + delerationRate;
             velocity.Speed = decreasedSpeed;
             //something about direction
 
