@@ -10,14 +10,11 @@ namespace AutonomousDemo
     {
         public Vehicle Vehicle;
         public int Time;
-
-        public double CurrentSpeed { get; set; }
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         
-        public VehicleMotion(double currentSpeed, double meters, int seconds)
+        public VehicleMotion( double meters, int seconds)
         {
-            this.CurrentSpeed = currentSpeed;
             this.CurrentVelocity = CalculateCurrentVelocity(meters, seconds);
         }
 
