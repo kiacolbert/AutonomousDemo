@@ -13,7 +13,7 @@ namespace AutonomousDemo
 
             if (vehicleMotion.CurrentVelocity.Speed == 0)
             {
-                var accelerationTime = 4;
+                var accelerationTime = 4.0;
                 var constantAccelerationDistancePerSecond = road.SpeedLimit/accelerationTime; //travel this many meters per second
 
                 var nonAcceleratingdistance = meters - road.SpeedLimit;
