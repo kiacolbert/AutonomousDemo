@@ -13,9 +13,9 @@ namespace AutonomousDemo
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         
-        public VehicleMotion( double meters, int seconds)
+        public VehicleMotion(Velocity currentVelocity)
         {
-            this.CurrentVelocity = CalculateCurrentVelocity(meters, seconds);
+            this.CurrentVelocity = currentVelocity;// CalculateCurrentVelocity(meters, seconds);
         }
 
         public Velocity CalculateCurrentVelocity(double meters, int seconds)
@@ -25,8 +25,13 @@ namespace AutonomousDemo
 
         public Velocity DecelerateVelocityPerSecond(Velocity velocity)
         {
-            var delerationRate = -3.4; //m/s^2
-            var decreasedSpeed = velocity.Speed + delerationRate;
+            var decelerationRate = -3.4; //m/s^2
+            //less than 3.4?
+            if(velocity.Speed == 0)
+            {
+                return velocity;
+            }
+            var decreasedSpeed = velocity.Speed + decelerationRate;
             velocity.Speed = decreasedSpeed;
             //something about direction
 
