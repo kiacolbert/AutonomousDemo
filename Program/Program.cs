@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutonomousDemo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,10 @@ namespace AutonomousDemo
     {
         static void Main(string[] arg)
         {
-            VehicleMotion vehicleMotion = new VehicleMotion(0);
+            VehicleMotion vehicleMotion = new VehicleMotion(202, 8);
             Speedometer speedometer = new Speedometer();
             speedometer.SpeedometerDisplay(vehicleMotion, 8, 202);
+           var currentVelocity = vehicleMotion.DecelerateVelocityPerSecond(vehicleMotion.CurrentVelocity);
          
         }
     }
