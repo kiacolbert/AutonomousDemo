@@ -11,8 +11,6 @@ namespace AutonomousDemo
     {
         static void Main(string[] arg)
         {
-            Speedometer.SpeedometerDisplay(new VehicleMotion (new Velocity(0)));
-
             Loop loop = new Loop();
             loop.GameLoop(true);
          

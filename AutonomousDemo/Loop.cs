@@ -18,8 +18,8 @@ namespace AutonomousDemo
             {
                 int start = DateTime.Now.Millisecond;
                 ProcessInput();
-                // Update();
-                //Render();
+                Update();
+                Render();
                 Thread.Sleep(900);
             }
 
@@ -27,17 +27,19 @@ namespace AutonomousDemo
 
         private void Render()
         {
+            //show speedometer??
             throw new NotImplementedException();
         }
 
         private void Update()
         {
+            ///????
             throw new NotImplementedException();
         }
 
         private void ProcessInput()
         {
-            
+            throw new NotImplementedException();
         }
     }
 }
