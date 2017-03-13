@@ -12,10 +12,11 @@ namespace AutonomousDemo
         public int Time;
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
-        
+        public double DistanceTraveled { get; set; }
+
         public VehicleMotion(Velocity currentVelocity)
         {
-            this.CurrentVelocity = currentVelocity;// CalculateCurrentVelocity(meters, seconds);
+            this.CurrentVelocity = currentVelocity;
         }
 
         public Velocity CalculateCurrentVelocity(double meters, int seconds)
@@ -40,11 +41,6 @@ namespace AutonomousDemo
         public Velocity ZeroVelocity(Velocity velocity)
         {
             throw new NotImplementedException();
-        }
-
-        public double CalculateSpeed(double meters, double time)
-        {
-            return meters / time;
         }
 
         public double ConstantAcceleration(double travelTime, Velocity finalVelocity, Velocity initialVelocity)

@@ -8,20 +8,33 @@ namespace AutonomousDemo
 {
     public class DeterminePath
     {
-        public void CalculateTravelTime(double meters, Road road, VehicleMotion vehicleMotion)
+        //these don't belong here
+        VehicleMotion vehicleMotion = new VehicleMotion(new Velocity(0));
+        DeterminePath determinePath = new DeterminePath();
+        Road road = new Road(27);
+
+        Velocity displacement = new Velocity(3.4);
+        
+        public Velocity CalculateDriveVelocity()
         {
-
-            if (vehicleMotion.CurrentVelocity.Speed == 0)
+            if (vehicleMotion.CurrentVelocity.Speed < road.SpeedLimit)
             {
-                var accelerationTime = 4.0;
-                var constantAccelerationDistancePerSecond = road.SpeedLimit/accelerationTime; //travel this many meters per second
-
-                var nonAcceleratingdistance = meters - road.SpeedLimit;
-                var nonAcceleratingTime = nonAcceleratingdistance / road.SpeedLimit;
-                var totalTime = accelerationTime + nonAcceleratingTime;
-
-                //    vehicleMotion.ConstantAcceleration(travelTime, finalVelocity, vehicleMotion.CurrentVelocity);
+                vehicleMotion.DistanceTraveled += displacement.Speed;
+                return vehicleMotion.CurrentVelocity + displacement;
             }
+            else
+            {
+                return vehicleMotion.CurrentVelocity;
+            }
+        }
+        public Velocity StoppingDistance(double destinationDistance)
+        {  
+          var stoppingDistance = destinationDistance - vehicleMotion.DistanceTraveled;
+            if(stoppingDistance > vehicleMotion.CurrentVelocity.Speed)
+            {
+                throw new NotImplementedException();
+            }
+            return vehicleMotion.CurrentVelocity - displacement;
         }
     }
 }

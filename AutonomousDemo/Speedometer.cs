@@ -6,16 +6,14 @@ using System.Threading.Tasks;
 
 namespace AutonomousDemo
 {
-    public class Speedometer
+    public static class Speedometer
     {
-        public void SpeedometerDisplay(VehicleMotion vehicleMotion, int travelTime, double meters)
+        public static void SpeedometerDisplay(VehicleMotion vehicleMotion)
         {
-
-            var metersPerSecond= vehicleMotion.CalculateCurrentVelocity(meters, travelTime);
-            var milesPerHour = ConvertMetersPerSecondToMpH(metersPerSecond.Speed);
+            var milesPerHour = ConvertMetersPerSecondToMpH(vehicleMotion.CurrentVelocity.Speed);
             Console.WriteLine($"Speed: {milesPerHour}");
         }
-        public double ConvertMetersPerSecondToMpH(double metersPerSecond)
+        public static double ConvertMetersPerSecondToMpH(double metersPerSecond)
         {
             return metersPerSecond * 2.2369;
         }

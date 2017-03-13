@@ -11,14 +11,10 @@ namespace AutonomousDemo
     {
         static void Main(string[] arg)
         {
-            VehicleMotion vehicleMotion = new VehicleMotion(new Velocity(0));
-            Speedometer speedometer = new Speedometer();
-            speedometer.SpeedometerDisplay(vehicleMotion, 8, 202);
-            var currentVelocity = vehicleMotion.DecelerateVelocityPerSecond(vehicleMotion.CurrentVelocity);
-            DeterminePath determinePath = new DeterminePath();
-            Road road = new Road(27);
-            determinePath.CalculateTravelTime(202, road, vehicleMotion);
-            
+            Speedometer.SpeedometerDisplay(new VehicleMotion (new Velocity(0)));
+
+            Loop loop = new Loop();
+            loop.GameLoop(true);
          
         }
     }
