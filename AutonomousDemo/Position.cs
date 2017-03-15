@@ -19,6 +19,5 @@ namespace AutonomousDemo
             var y = velocity.Speed * Math.Sin(velocity.Direction);
             return new Position(x, y);
         }
-
     }
 }

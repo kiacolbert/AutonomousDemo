@@ -8,9 +8,9 @@ namespace AutonomousDemo
 {
     public static class Speedometer
     {
-        public static void SpeedometerDisplay(VehicleMotion vehicleMotion)
+        public static void SpeedometerDisplay(Vehicle vehicle)
         {
-            var milesPerHour = ConvertMetersPerSecondToMpH(vehicleMotion.CurrentVelocity.Speed);
+            var milesPerHour = ConvertMetersPerSecondToMpH(vehicle.VehicleMotion.CurrentVelocity.Speed);
             Console.WriteLine($"Speed: {milesPerHour}");
         }
         public static double ConvertMetersPerSecondToMpH(double metersPerSecond)

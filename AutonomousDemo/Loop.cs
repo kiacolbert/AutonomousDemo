@@ -10,36 +10,26 @@ namespace AutonomousDemo
     public class Loop
     {
 
-        public void GameLoop(bool answer)
+        public void SimulationLoop(Vehicle vehicle)
         {
-            int lastTime = DateTime.Now.Millisecond;
-            
             while (true)
             {
-                int start = DateTime.Now.Millisecond;
-                ProcessInput();
-                Update();
-                Render();
-                Thread.Sleep(900);
+                ProcessInput(vehicle);
+                DisplayVehicleStats(vehicle);
             }
-
         }
 
-        private void Render()
+        private void ProcessInput(Vehicle vehicle)
         {
-            //show speedometer??
+            
+            //change position
             throw new NotImplementedException();
         }
 
-        private void Update()
+        private void DisplayVehicleStats(Vehicle vehicle)
         {
-            ///????
-            throw new NotImplementedException();
-        }
-
-        private void ProcessInput()
-        {
-            throw new NotImplementedException();
-        }
+            Speedometer.SpeedometerDisplay(vehicle);
+            Console.WriteLine($"Vehicle's Position {vehicle.Position.XCoordinate},{vehicle.Position.YCoordinate}");
+        }    
     }
 }

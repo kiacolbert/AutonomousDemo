@@ -8,33 +8,25 @@ namespace AutonomousDemo
 {
     public class DeterminePath
     {
-        //these don't belong here
-        VehicleMotion vehicleMotion = new VehicleMotion(new Velocity(0));
-        DeterminePath determinePath = new DeterminePath();
         Road road = new Road(27);
-
-        Velocity displacement = new Velocity(3.4);
         
-        public Velocity CalculateDriveVelocity()
+        public Velocity CalculateDriveVelocity(Vehicle vehicle)
         {
-            if (vehicleMotion.CurrentVelocity.Speed < road.SpeedLimit)
+            if (vehicle.VehicleMotion.CurrentVelocity.Speed < road.SpeedLimit)
             {
-                vehicleMotion.DistanceTraveled += displacement.Speed;
-                return vehicleMotion.CurrentVelocity + displacement;
+                return vehicle.VehicleMotion.AccelerateVelocityPerSecond(vehicle.VehicleMotion.CurrentVelocity);
             }
-            else
-            {
-                return vehicleMotion.CurrentVelocity;
-            }
+                return vehicle.VehicleMotion.CurrentVelocity;
         }
-        public Velocity StoppingDistance(double destinationDistance)
-        {  
-          var stoppingDistance = destinationDistance - vehicleMotion.DistanceTraveled;
-            if(stoppingDistance > vehicleMotion.CurrentVelocity.Speed)
-            {
-                throw new NotImplementedException();
-            }
-            return vehicleMotion.CurrentVelocity - displacement;
-        }
+        //just needed to save now
+        //public Velocity StoppingDistance(Vehicle vehicle, double destinationDistance)
+        //{  
+        //  var stoppingDistance = destinationDistance - vehicle.VehicleMotion.DistanceTraveled;
+        //    if(stoppingDistance > vehicle.VehicleMotion.CurrentVelocity.Speed)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
+        //    return vehicle.VehicleMotion.CurrentVelocity - displacement;
+        //}
     }
 }

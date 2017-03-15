@@ -11,8 +11,9 @@ namespace AutonomousDemo
     {
         static void Main(string[] arg)
         {
+            Vehicle vehicle = new Vehicle(800);
             Loop loop = new Loop();
-            loop.GameLoop(true);
+            loop.SimulationLoop(vehicle);
          
         }
     }
