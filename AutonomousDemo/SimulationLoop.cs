@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AutonomousDemo
 {
-    public class Loop
+    public class SimulationLoop
     {
 
-        public void SimulationLoop(Vehicle vehicle)
+        public void Run(Vehicle vehicle)
         {
             while (true)
             {
