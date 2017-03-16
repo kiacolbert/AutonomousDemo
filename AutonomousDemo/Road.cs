@@ -10,7 +10,7 @@ namespace AutonomousDemo
     {
         public double Distance { get; set; }
         public double LaneWidth { get; set; }
-        public int SpeedLimit { get; set; }
+        public double SpeedLimit { get; set; }
         public RoadType Type { get; set; }
 
 

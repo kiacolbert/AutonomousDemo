@@ -10,12 +10,14 @@ namespace AutonomousDemo
     {
         public Vehicle Vehicle;
         public int Time;
+        double Rate = 3.4; //m/s^2
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
-        
+        public double DistanceTraveled { get; set; }
+
         public VehicleMotion(Velocity currentVelocity)
         {
-            this.CurrentVelocity = currentVelocity;// CalculateCurrentVelocity(meters, seconds);
+            this.CurrentVelocity = currentVelocity;
         }
 
         public Velocity CalculateCurrentVelocity(double meters, int seconds)
@@ -25,14 +27,25 @@ namespace AutonomousDemo
 
         public Velocity DecelerateVelocityPerSecond(Velocity velocity)
         {
-            var decelerationRate = -3.4; //m/s^2
             //less than 3.4?
             if(velocity.Speed == 0)
             {
                 return velocity;
             }
-            var decreasedSpeed = velocity.Speed + decelerationRate;
+            var decreasedSpeed = velocity.Speed - Rate;
             velocity.Speed = decreasedSpeed;
+            //something about direction
+
+            return velocity;
+        }
+        public Velocity AccelerateVelocityPerSecond(Velocity velocity)
+        {
+            if (velocity.Speed >= 120)
+            {
+                return velocity;
+            }
+            var increasedSpeed = velocity.Speed + Rate;
+            velocity.Speed = increasedSpeed;
             //something about direction
 
             return velocity;
@@ -40,11 +53,6 @@ namespace AutonomousDemo
         public Velocity ZeroVelocity(Velocity velocity)
         {
             throw new NotImplementedException();
-        }
-
-        public double CalculateSpeed(double meters, double time)
-        {
-            return meters / time;
         }
 
         public double ConstantAcceleration(double travelTime, Velocity finalVelocity, Velocity initialVelocity)
