@@ -11,10 +11,11 @@ namespace AutonomousDemo
         public Vehicle Vehicle;
         public int Time;
         double Rate = 3.4; //m/s^2
+
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         public double DistanceTraveled { get; set; }
-        public double DistanceToTravel { get; set; }
+        public double TravelDistance { get; set; }
 
         public VehicleMotion(Velocity currentVelocity)
         {
@@ -41,8 +42,9 @@ namespace AutonomousDemo
         }
         public Velocity Accelerate(Velocity velocity)
         {
-            if (velocity.Speed >= 120)
+            if (velocity.Speed >= 54)
             {
+                velocity.Speed = 54;
                 return velocity;
             }
             var increasedSpeed = velocity.Speed + Rate;
