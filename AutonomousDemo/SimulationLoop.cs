@@ -10,20 +10,20 @@ namespace AutonomousDemo
     public class SimulationLoop
     {
 
-        public void Run(Vehicle vehicle)
+        public void Run(Vehicle vehicle, double distance)
         {
             while (true)
             {
-                ProcessInput(vehicle);
+                ProcessInput(vehicle, distance);
                 DisplayVehicleStats(vehicle);
             }
         }
 
-        private void ProcessInput(Vehicle vehicle)
+        private void ProcessInput(Vehicle vehicle, double distance)
         {
-            
+            vehicle.VehicleMotion.CalculateCurrentVelocity
             //change position
-            throw new NotImplementedException();
+            
         }
 
         private void DisplayVehicleStats(Vehicle vehicle)

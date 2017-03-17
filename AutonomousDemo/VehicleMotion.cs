@@ -14,6 +14,7 @@ namespace AutonomousDemo
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         public double DistanceTraveled { get; set; }
+        public double DistanceToTravel { get; set; }
 
         public VehicleMotion(Velocity currentVelocity)
         {
@@ -25,7 +26,7 @@ namespace AutonomousDemo
             return new Velocity(meters/seconds);
         }
 
-        public Velocity DecelerateVelocityPerSecond(Velocity velocity)
+        public Velocity Decelerate(Velocity velocity)
         {
             //less than 3.4?
             if(velocity.Speed == 0)
@@ -38,7 +39,7 @@ namespace AutonomousDemo
 
             return velocity;
         }
-        public Velocity AccelerateVelocityPerSecond(Velocity velocity)
+        public Velocity Accelerate(Velocity velocity)
         {
             if (velocity.Speed >= 120)
             {
