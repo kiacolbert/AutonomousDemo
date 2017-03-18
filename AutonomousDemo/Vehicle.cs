@@ -36,7 +36,17 @@ namespace AutonomousDemo
 
         }
 
-        public Position Position { get { return position; } set { this.Position = position; } }
+        public Position Position
+        {
+            get
+            {
+                return position;
+            }
+            set
+            {
+                this.position = value;
+            }
+        }
       
         public Vehicle(double area)
         {

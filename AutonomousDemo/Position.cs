@@ -13,10 +13,11 @@ namespace AutonomousDemo
             this.YCoordinate = yCoordinate;
         }
 
-        public Position TravelForOneSecond(Velocity velocity)
+        public Position TravelForOneSecond(Velocity currentVelocity, Velocity previousVelocity)
         {
-            var x =  velocity.Speed * Math.Cos(velocity.Direction);
-            var y = velocity.Speed * Math.Sin(velocity.Direction);
+            Velocity velocitySum = currentVelocity + previousVelocity;
+            var x = velocitySum.Speed * Math.Cos(currentVelocity.Direction);
+            var y = velocitySum.Speed * Math.Sin(currentVelocity.Direction);
             return new Position(x, y);
         }
     }
