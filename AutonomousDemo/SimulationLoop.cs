@@ -15,14 +15,15 @@ namespace AutonomousDemo
             while (true)
             {
                 ProcessInput(vehicle, distance);
-                Thread.Sleep(1000); //just here so I can see the output
                 DisplayVehicleStats(vehicle);
+                Console.ReadLine();
             }
         }
 
         private void ProcessInput(Vehicle vehicle, double distance)
         {
-            vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
+           var updatedVelocity = vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
+            vehicle.VehicleMotion.CurrentVelocity = updatedVelocity;
            // vehicle.VehicleMotion.Decelerate(vehicle.VehicleMotion.CurrentVelocity);
             //change position
             
