@@ -8,6 +8,7 @@ namespace AutonomousDemo
 {
     public class Vehicle
     {
+        
         protected VehicleMotion vehicleMotion = new VehicleMotion(new Velocity(0));
         protected Position position = new Position(0, 0);
 
@@ -23,6 +24,18 @@ namespace AutonomousDemo
                 this.vehicleMotion = value;
             }
         }
+
+        const double width = 1.82372; //meters
+
+        public double Width
+        {
+            get
+            {
+                return Width;
+            }
+
+        }
+
         public Position Position { get { return position; } set { this.Position = position; } }
       
         public Vehicle(double area)

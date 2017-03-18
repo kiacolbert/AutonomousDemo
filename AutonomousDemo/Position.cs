@@ -2,12 +2,12 @@
 
 namespace AutonomousDemo
 {
-    public class Position 
+    public struct Position 
     {
-        public double XCoordinate { get; set; } = 0;
-        public double YCoordinate { get; set; } = 0;
+        public double XCoordinate;
+        public double YCoordinate;
 
-        public Position(double xCoordinate, double yCoordinate)
+        public Position(double xCoordinate = 0, double yCoordinate = 0)
         {
             this.XCoordinate = xCoordinate;
             this.YCoordinate = yCoordinate;

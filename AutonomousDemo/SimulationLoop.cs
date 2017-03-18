@@ -10,7 +10,7 @@ namespace AutonomousDemo
     public class SimulationLoop
     {
 
-        public void Run(Vehicle vehicle, double distance)
+        public void Run(Vehicle vehicle,double distance)
         {
             while (true)
             {
@@ -22,8 +22,10 @@ namespace AutonomousDemo
 
         private void ProcessInput(Vehicle vehicle, double distance)
         {
-           var updatedVelocity = vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
+            var updatedVelocity = vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
             vehicle.VehicleMotion.CurrentVelocity = updatedVelocity;
+            var updatedPosition = vehicle.Position.TravelForOneSecond(vehicle.VehicleMotion.CurrentVelocity);
+            vehicle.Position = updatedPosition;
            // vehicle.VehicleMotion.Decelerate(vehicle.VehicleMotion.CurrentVelocity);
             //change position
             
