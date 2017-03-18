@@ -11,9 +11,12 @@ namespace AutonomousDemo
         public Vehicle Vehicle;
         public int Time;
         double Rate = 3.4; //m/s^2
+        const double MaximumVehicleSpeed = 54; //m/s
+
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         public double DistanceTraveled { get; set; }
+        public double TravelDistance { get; set; }
 
         public VehicleMotion(Velocity currentVelocity)
         {
@@ -25,30 +28,31 @@ namespace AutonomousDemo
             return new Velocity(meters/seconds);
         }
 
-        public Velocity DecelerateVelocityPerSecond(Velocity velocity)
+        public Velocity Decelerate(Velocity velocity)
         {
             //less than 3.4?
             if(velocity.Speed == 0)
             {
-                return velocity;
+                return new Velocity(velocity.Speed);
             }
             var decreasedSpeed = velocity.Speed - Rate;
             velocity.Speed = decreasedSpeed;
             //something about direction
 
-            return velocity;
+            return new Velocity(velocity.Speed);
         }
-        public Velocity AccelerateVelocityPerSecond(Velocity velocity)
+        public Velocity Accelerate(Velocity velocity)
         {
-            if (velocity.Speed >= 120)
+            if (velocity.Speed >= MaximumVehicleSpeed)
             {
-                return velocity;
+                velocity.Speed = MaximumVehicleSpeed;
+                return new Velocity(velocity.Speed);
             }
             var increasedSpeed = velocity.Speed + Rate;
             velocity.Speed = increasedSpeed;
             //something about direction
 
-            return velocity;
+            return new Velocity(velocity.Speed);
         }
         public Velocity ZeroVelocity(Velocity velocity)
         {

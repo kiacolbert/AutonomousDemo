@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace AutonomousDemo
 {
-    public class Velocity
+    public struct Velocity
     {
-        public double Speed { get; set; } = 0;
+        public double Speed;
         /// <summary>
         /// Direction on a two-dimensional surface, in radians.  Assumes that 0 radians is due east.
         /// </summary>
-        public double Direction { get; set; }  
+        public double Direction;  
 
 
-        public Velocity(double speed, double direction = Math.PI/2.0)
+        public Velocity(double speed = 0, double direction = Math.PI/2.0)
         {
             this.Speed = speed;
             this.Direction = direction;

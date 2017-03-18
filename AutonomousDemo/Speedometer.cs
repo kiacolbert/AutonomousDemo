@@ -15,7 +15,7 @@ namespace AutonomousDemo
         }
         public static double ConvertMetersPerSecondToMpH(double metersPerSecond)
         {
-            return metersPerSecond * 2.2369;
+            return Math.Truncate(metersPerSecond * 2.2369);
         }
 
     }
