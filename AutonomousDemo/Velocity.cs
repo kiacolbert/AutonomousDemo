@@ -23,7 +23,6 @@ namespace AutonomousDemo
 
         public static Velocity operator +(Velocity vIntial, Velocity vFinal)
         {
-
             var totalSpeed = vIntial.Speed + vFinal.Speed;
             var totalDirection = vIntial.Direction + vFinal.Direction;
 
