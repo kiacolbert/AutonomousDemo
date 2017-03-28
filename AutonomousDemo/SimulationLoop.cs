@@ -29,6 +29,8 @@ namespace AutonomousDemo
             vehicle.VehicleMotion.CurrentVelocity = updatedVelocity;
             lastPosition = vehicle.Position.TravelForOneSecond(vehicle.VehicleMotion.CurrentVelocity, lastPosition);
             vehicle.Position = lastPosition;
+            var direction = vehicle.Position.CalculateDirection(lastPosition, vehicle.VehicleMotion.CurrentVelocity);
+            
             // vehicle.VehicleMotion.Decelerate(vehicle.VehicleMotion.CurrentVelocity);
             //change position
             return vehicle.VehicleMotion.CurrentVelocity;

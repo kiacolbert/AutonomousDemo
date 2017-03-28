@@ -16,11 +16,17 @@ namespace AutonomousDemo
         public Position TravelForOneSecond(Velocity currentVelocity, Position previousPosition)
         {
 
-            var _x = currentVelocity.Speed * Math.Cos(currentVelocity.Direction);
-            var _y = currentVelocity.Speed * Math.Sin(currentVelocity.Direction);
-            var x = _x + previousPosition.XCoordinate;
-            var y = _y + previousPosition.YCoordinate;
+            var deltaX = currentVelocity.Speed * Math.Cos(currentVelocity.Direction);
+            var deltaY = currentVelocity.Speed * Math.Sin(currentVelocity.Direction);
+            var x = deltaX + previousPosition.XCoordinate;
+            var y = deltaY + previousPosition.YCoordinate;
             return new Position(x, y);
+        }
+        public double CalculateDirection(Position position, Velocity velocity)
+        {
+            var sinY = position.YCoordinate / velocity.Speed;
+           return Math.Asin(sinY);
+           
         }
     }
 }
