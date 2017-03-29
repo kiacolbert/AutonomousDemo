@@ -9,23 +9,31 @@ namespace AutonomousDemo
 {
     public class SimulationLoop
     {
+        public Position lastPosition = new Position();
 
-        public void Run(Vehicle vehicle, double distance)
-        {
+        public void Run(Vehicle vehicle, double distance) { 
+
             while (true)
             {
                 ProcessInput(vehicle, distance);
+                
                 DisplayVehicleStats(vehicle);
+               
                 Console.ReadLine();
             }
         }
 
-        private void ProcessInput(Vehicle vehicle, double distance)
+        private Velocity ProcessInput(Vehicle vehicle, double distance)
         {
-           var updatedVelocity = vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
+            var updatedVelocity = vehicle.VehicleMotion.Accelerate(vehicle.VehicleMotion.CurrentVelocity);
             vehicle.VehicleMotion.CurrentVelocity = updatedVelocity;
-           // vehicle.VehicleMotion.Decelerate(vehicle.VehicleMotion.CurrentVelocity);
+            lastPosition = vehicle.Position.TravelForOneSecond(vehicle.VehicleMotion.CurrentVelocity, lastPosition);
+            vehicle.Position = lastPosition;
+            var direction = vehicle.Position.CalculateDirection(lastPosition, vehicle.VehicleMotion.CurrentVelocity);
+            
+            // vehicle.VehicleMotion.Decelerate(vehicle.VehicleMotion.CurrentVelocity);
             //change position
+            return vehicle.VehicleMotion.CurrentVelocity;
             
         }
 

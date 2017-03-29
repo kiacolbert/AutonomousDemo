@@ -21,21 +21,20 @@ namespace AutonomousDemo
             this.Direction = direction;
         }
 
-        public static Velocity operator +(Velocity vIntial, Velocity vFinal)
+        public static Velocity operator +(Velocity initial, Velocity second)
         {
-
-            var totalSpeed = vIntial.Speed + vFinal.Speed;
-            var totalDirection = vIntial.Direction + vFinal.Direction;
+            var totalSpeed = initial.Speed + second.Speed;
+            var totalDirection = 0; //TODO: fix this. This method is not being used.
 
             return new Velocity(totalSpeed, totalDirection);
 
         }
 
-        public static Velocity operator -(Velocity vFinal, Velocity vInitial)
+        public static Velocity operator -(Velocity second, Velocity initial)
         {
 
-            var totalSpeed = vFinal.Speed - vInitial.Speed;
-            var totalDirection = vFinal.Direction - vInitial.Direction;
+            var totalSpeed = second.Speed - initial.Speed;
+            var totalDirection =0 ; //TODO: fix this. This method is not being used.
 
             return new Velocity(totalSpeed, totalDirection);
 

@@ -2,22 +2,31 @@
 
 namespace AutonomousDemo
 {
-    public class Position 
+    public struct Position 
     {
-        public double XCoordinate { get; set; } = 0;
-        public double YCoordinate { get; set; } = 0;
+        public double XCoordinate;
+        public double YCoordinate;
 
-        public Position(double xCoordinate, double yCoordinate)
+        public Position(double xCoordinate = 0, double yCoordinate = 0)
         {
             this.XCoordinate = xCoordinate;
             this.YCoordinate = yCoordinate;
         }
 
-        public Position TravelForOneSecond(Velocity velocity)
+        public Position TravelForOneSecond(Velocity currentVelocity, Position previousPosition)
         {
-            var x =  velocity.Speed * Math.Cos(velocity.Direction);
-            var y = velocity.Speed * Math.Sin(velocity.Direction);
+
+            var deltaX = currentVelocity.Speed * Math.Cos(currentVelocity.Direction);
+            var deltaY = currentVelocity.Speed * Math.Sin(currentVelocity.Direction);
+            var x = deltaX + previousPosition.XCoordinate;
+            var y = deltaY + previousPosition.YCoordinate;
             return new Position(x, y);
+        }
+        public double CalculateDirection(Position position, Velocity velocity)
+        {
+            var sinY = position.YCoordinate / velocity.Speed;
+           return Math.Asin(sinY);
+           
         }
     }
 }
