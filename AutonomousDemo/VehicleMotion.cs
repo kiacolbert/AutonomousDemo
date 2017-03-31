@@ -16,7 +16,7 @@ namespace AutonomousDemo
         public double CurrentAcceleration { get; set; }
         public Velocity CurrentVelocity { get; set; }
         public double DistanceTraveled { get; set; }
-        public double TravelDistance { get; set; }
+       
 
         public VehicleMotion(Velocity currentVelocity)
         {
@@ -30,10 +30,10 @@ namespace AutonomousDemo
 
         public Velocity Decelerate(Velocity velocity)
         {
-            if(velocity.Speed == 0 || velocity.Speed < 3.4)
+            if(velocity.Speed == 0 || velocity.Speed < Rate)
             {   
                 //Direction will change in position class
-                return new Velocity(velocity.Speed, velocity.Direction);
+                return new Velocity(velocity.Speed = 0, velocity.Direction);
             }
             var decreasedSpeed = velocity.Speed - Rate;
             velocity.Speed = decreasedSpeed;

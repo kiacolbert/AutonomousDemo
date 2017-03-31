@@ -13,7 +13,7 @@ namespace AutonomousDemo
 
         public void Run(Vehicle vehicle, double distance) {
 
-            DeterminePath determinePath = new DeterminePath(distance);
+            DetermineVelocity determinePath = new DetermineVelocity(distance);
 
             vehicle.VehicleMotion.TravelDistance = distance;
 

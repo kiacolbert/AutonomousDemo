@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace AutonomousDemo
 {
-    public class DeterminePath
+    public class DetermineVelocity
     {
         private double Distance;
-        double _x, _y;
+        private double _x, _y;
 
-        public DeterminePath() { }
+        public double TravelDistance { get; set; }
 
-        public DeterminePath(double distance)
+        public DetermineVelocity() { }
+
+        public DetermineVelocity(double distance)
         {
             this.Distance = distance;
         }
@@ -41,7 +43,8 @@ namespace AutonomousDemo
         {
             var sqrtXY = CalculateDistanceTraveled(vehicle);
             var distancesqrd = distance * distance;
-            return sqrtXY == distancesqrd;
+            var sqrtDistance = Math.Sqrt(distancesqrd);
+            return sqrtXY == sqrtDistance;
         }
     }
 }
