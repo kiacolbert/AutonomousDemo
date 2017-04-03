@@ -11,16 +11,23 @@ namespace AutonomousDemo
     {
         public Position lastPosition = new Position();
 
-        public void Run(Vehicle vehicle, double distance) { 
+        public void Run(Vehicle vehicle, double distance) {
 
-            while (true)
+            DetermineVelocity determinePath = new DetermineVelocity(distance);
+
+            vehicle.VehicleMotion.TravelDistance = distance;
+
+            while (vehicle.VehicleMotion.TravelDistance >= vehicle.VehicleMotion.DistanceTraveled)
             {
                 ProcessInput(vehicle, distance);
                 
                 DisplayVehicleStats(vehicle);
-               
+
+                vehicle.VehicleMotion.DistanceTraveled = determinePath.CalculateDistanceTraveled(vehicle);    
+                           
                 Console.ReadLine();
             }
+
         }
 
         private Velocity ProcessInput(Vehicle vehicle, double distance)

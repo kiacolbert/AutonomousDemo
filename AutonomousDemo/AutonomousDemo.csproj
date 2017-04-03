@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeterminePath.cs" />
+    <Compile Include="DetermineVelocity.cs" />
     <Compile Include="LaneDetection.cs" />
     <Compile Include="SimulationLoop.cs" />
     <Compile Include="Position.cs" />
